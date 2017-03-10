@@ -14,16 +14,23 @@ class HomeContainer extends Component {
     return (
       <Layout>
         <Header className="header">
-          <div className="logo" />
+          <div className="logo">
+            <h2>COLOSE管理平台</h2>
+          </div>
           <Menu
             theme="dark"
             mode="horizontal"
             defaultSelectedKeys={['2']}
             style={{ lineHeight: '64px' }}
+            className='menus'
           >
-            <Menu.Item key="1">nav 1</Menu.Item>
-            <Menu.Item key="2">nav 2</Menu.Item>
-            <Menu.Item key="3">nav 3</Menu.Item>
+            <Menu.Item key="1">订单中心</Menu.Item>
+            <Menu.Item key="2">用户中心</Menu.Item>
+            <Menu.Item key="3">
+              <div className='notice'>
+                通知中心
+              </div>
+            </Menu.Item>
           </Menu>
         </Header>
         <Layout>
