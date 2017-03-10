@@ -5,3 +5,5 @@ const AuthService = {
     return fetch('/');
   }
 }
+
+export default AuthService;
