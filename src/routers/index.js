@@ -7,6 +7,7 @@ import authSaga from './../reducers/auth.saga';
 import HomeContainer from './../containers/home-container';
 import Welcome from './../components/welcome';
 import OrderContainer from './../containers/order-container.js';
+
 const store = configStore();
 store.runSaga(authSaga);
 
