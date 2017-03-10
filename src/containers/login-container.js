@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import { connect } from 'react-redux';
-import './../assets/styles/login.css';
+import './../assets/styles/auth/index.css';
 import {AuthAction} from './../actions/auth';
 import { browserHistory } from 'react-router';
 import LoginForm from './../components/login-form.js';

@@ -1,7 +1,6 @@
 import React from 'react';
 import {Provider} from 'react-redux';
 import { Router, Route, hashHistory, IndexRoute } from 'react-router';
-import App from './../components/App';
 import configStore from './../stores';
 import LoginContainer from './../containers/login-container';
 import authSaga from './../reducers/auth.saga';

@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import OrderList from './../components/order-list';
-import './../assets/styles/order-list.css';
+import './../assets/styles/order/list.css';
 class HomeContainer extends Component {
   render() {
     return (
