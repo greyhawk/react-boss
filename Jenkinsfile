@@ -33,7 +33,7 @@ node {
 
     stage('Deploy stage') {
       sh "sed -i \"s/replace me/repo.coloseo.io\\/sparrow-boss:${shortCommit}/g\" deploy.json"
-      sh "curl -i -X PUT -H 'Content-Type: application/json' -u marathon:Bxazd1er9Fw^ -d @deploy.json https://marathon.coloseo.io/v2/apps/sparrow/wechat/api"
+      sh "curl -i -X PUT -H 'Content-Type: application/json' -u marathon:Bxazd1er9Fw^ -d @deploy.json https://marathon.coloseo.io/v2/apps/boss"
     }
 
     stage('Slack notifaction') {
