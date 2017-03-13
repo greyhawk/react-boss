@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
-import OrderList from './../components/order-list';
-import './../assets/styles/order/list.css';
+import OrderList from './../components/news-list';
+import './../assets/styles/news/list.css';
 class HomeContainer extends Component {
   render() {
     return (
