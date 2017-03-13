@@ -19,6 +19,10 @@ node {
       sh "sudo docker run --rm -v /share/jenkins_home/workspace/${JOB_NAME}:/code -w /code repo.coloseo.io/node:6.9.2-dev yarn run ci"
     }
 
+    stage('Build app') {
+      sh "sudo docker run --rm -v /share/jenkins_home/workspace/${JOB_NAME}:/code -w /code repo.coloseo.io/node:6.9.2-dev yarn run build"
+    }
+
     stage('Build docker image') {
       sh "sudo docker build -t repo.coloseo.io/sparrow-boss:${shortCommit} ."
     }
