@@ -1,0 +1,68 @@
+{
+  "id": "/boss",
+  "cmd": null,
+  "cpus": 0.1,
+  "mem": 128,
+  "disk": 0,
+  "instances": 1,
+  "container": {
+    "type": "DOCKER",
+    "volumes": [],
+    "docker": {
+      "image": "replace me",
+      "network": "BRIDGE",
+      "portMappings": [
+        {
+          "containerPort": 80,
+          "hostPort": 0,
+          "servicePort": 10030,
+          "protocol": "tcp",
+          "labels": {}
+        }
+      ],
+      "privileged": false,
+      "parameters": [
+        {
+          "key": "dns",
+          "value": "192.168.1.3"
+        },
+        {
+          "key": "dns",
+          "value": "192.168.1.4"
+        },
+        {
+          "key": "dns",
+          "value": "192.168.1.5"
+        }
+      ],
+      "forcePullImage": false
+    }
+  },
+  "healthChecks": [
+    {
+      "path": "/",
+      "protocol": "HTTP",
+      "portIndex": 0,
+      "gracePeriodSeconds": 300,
+      "intervalSeconds": 60,
+      "timeoutSeconds": 20,
+      "maxConsecutiveFailures": 3,
+      "ignoreHttp1xx": false
+    }
+  ],
+  "labels": {
+    "HAPROXY_GROUP": "external",
+    "HAPROXY_0_VHOST": "boss.coloseo.cn",
+    "HAPROXY_0_REDIRECT_TO_HTTPS": "true"
+  },
+  "portDefinitions": [
+    {
+      "port": 10030,
+      "protocol": "tcp",
+      "labels": {}
+    }
+  ],
+  "uris": [
+    "http://nginx-docker-auth.marathon.mesos/docker.tar.gz"
+  ]
+}

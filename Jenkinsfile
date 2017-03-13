@@ -31,6 +31,11 @@ node {
       sh "sudo docker push repo.coloseo.io/sparrow-boss:${shortCommit}"
     }
 
+    stage('Deploy stage') {
+      sh "sed -i \"s/replace me/repo.coloseo.io\\/sparrow-boss:${shortCommit}/g\" deploy.json"
+      sh "curl -i -X PUT -H 'Content-Type: application/json' -u marathon:Bxazd1er9Fw^ -d @deploy.json https://marathon.coloseo.io/v2/apps/sparrow/wechat/api"
+    }
+
     stage('Slack notifaction') {
       slackSend color: 'good', message: "${JOB_NAME} build: ${currentBuild.result}", channel: "#general", teamDomain: "coloseo", token: "${slack_token}"
     }
