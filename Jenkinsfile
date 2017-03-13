@@ -8,7 +8,7 @@ node {
       git branch: 'develop', credentialsId: 'coloseo', url: 'https://github.com/coloseo/react-boss.git'
     }
 
-    gitCommit = sh(returnStdout true, script: 'git rev-parse HEAD').trim()
+    gitCommit = sh(returnStdout: true, script: 'git rev-parse HEAD').trim()
     shortCommit = gitCommit.take(6)
 
     stage('Install node modules') {
