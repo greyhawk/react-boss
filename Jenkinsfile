@@ -16,7 +16,7 @@ node {
     }
 
     stage('Run unit test') {
-      sh "sudo docker run --rm -v /share/jenkins_home/workspace/${JOB_NAME}:/code -w /code repo.coloseo.io/node:6.9.2-dev yarn run test"
+      sh "sudo docker run --rm -v /share/jenkins_home/workspace/${JOB_NAME}:/code -w /code repo.coloseo.io/node:6.9.2-dev yarn run ci"
     }
 
     stage('Build docker image') {
