@@ -22,6 +22,10 @@ class RichEditor extends Component {
 
          this.uploadImageCallBack = (e) => {
            console.log('e', e);
+           console.log('upload your file here');
+           return new Promise(function(resolve, reject) {
+             resolve(12);
+           })
          };
        }
 

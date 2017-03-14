@@ -20,9 +20,6 @@ class NewsViewContainer extends Component {
     this.setState({html});
   }
 
-  componentDidMount() {
-    // console.log('this.props.routeParams', this.props.routeParams);
-  }
   render() {
     return (
       <div className='page-news-view'>
