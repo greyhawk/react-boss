@@ -1,15 +1,45 @@
-import React, {Component} from 'react';
+import React, {Component, PropTypes} from 'react';
 export default class Map extends Component {
+  static propTypes = {
+    address: PropTypes.string.isRequired,
+    onChange: PropTypes.func.isRequired,
+  }
   constructor(props) {
     super(props);
   }
   componentDidMount() {
+    const self = this;
     const container = this.refs.map;
     var map = new window.AMap.Map(container, {
         resizeEnable: true,
         zoom: 12,
     });
-    map.plugin('AMap.Geolocation', function () {
+    map.setFitView();
+    const marker = new window.AMap.Marker({
+        position: map.getCenter(),
+        draggable: true,
+        cursor: 'move',
+        raiseOnDrag: true,
+        map,
+    });
+
+
+    window.AMap.event.addListener(marker, 'dragend', (location) => {
+      const geocoder = new window.AMap.Geocoder({
+        radius: 1000,
+        extensions: "all"
+      });
+      const lnglat = location.lnglat;
+      geocoder.getAddress([lnglat.lat, lnglat.lng], (status, result) => {
+        console.log('status', status);
+        console.log('result', result);
+        self.props.onChange(status, result);
+      });
+    }, (e) => {
+      console.log('e', e);
+    });
+
+    map.plugin(["AMap.Geocoder", 'AMap.Geolocation'], function () {
       const geolocation = new window.AMap.Geolocation({
           enableHighAccuracy: true,//是否使用高精度定位，默认:true
           timeout: 10000,          //超过10秒后停止定位，默认：无穷大
@@ -26,11 +56,22 @@ export default class Map extends Component {
       map.addControl(geolocation);
       geolocation.getCurrentPosition();
       window.AMap.event.addListener(geolocation, 'complete', (location) => {
-        console.log('location', location);
-      });//返回定位信息
+        marker.setPosition(location.position);
+      });
       window.AMap.event.addListener(geolocation, 'error', (e) => {
         console.log('error', e);
       });
+      const address = self.props.address;
+      if (address) {
+        const geocoder = new window.AMap.Geocoder({
+          city: "010",
+          radius: 1000
+        });
+        geocoder.getLocation(address, function(status, result) {
+          self.props.onChange(status, result);
+        });
+      }
+
   });
   }
   componentWillUnmount() {
