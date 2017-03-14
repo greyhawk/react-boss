@@ -6,7 +6,8 @@ import LoginContainer from './../containers/login-container';
 import authSaga from './../reducers/auth.saga';
 import HomeContainer from './../containers/home-container';
 import Welcome from './../components/welcome';
-import OrderContainer from './../containers/news-container.js';
+import NewsContainer from './../containers/news-container.js';
+import NewsViewContainer from './../containers/news-view-container';
 import ScenicContainer from './../containers/scenic-container';
 
 const store = configStore();
@@ -18,7 +19,8 @@ const Root = () => (
       <Route path='/login' component={LoginContainer} />
 			<Route path="/" component={HomeContainer}>
         <IndexRoute component={Welcome} />
-        <Route path='/news' component={OrderContainer} />
+        <Route path='/news' component={NewsContainer} />
+        <Route path='/news/:id' component={NewsViewContainer} />
         <Route path='/scenic' component={ScenicContainer} />
       </Route>
 		</Router>
