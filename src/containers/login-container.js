@@ -5,6 +5,7 @@ import {AuthAction} from './../actions/auth';
 import { browserHistory } from 'react-router';
 import LoginForm from './../components/login-form.js';
 import { Form } from 'antd';
+import {Lifecycle} from 'react-router';
 
 function hasErrors(fieldsError) {
   return Object.keys(fieldsError).some(field => fieldsError[field]);
@@ -12,10 +13,16 @@ function hasErrors(fieldsError) {
 
 class LoginContainer extends Component {
   componentWillReceiveProps(props) {
-    const {user, router} = props;
-    if (user) {
-      router.push('/');
+    console.log('props', props);
+    const {auth, router} = props;
+    try{
+      if (auth.message === "authorized" ) {
+        router.push('/');
+      }
+    }catch(e){
+
     }
+
   }
   componentDidMount() {
     // this.props.form.validateFields();
@@ -41,8 +48,8 @@ class LoginContainer extends Component {
   }
 }
 LoginContainer = connect((payload) => {
-  const user = payload.auth.user;
-  return  {user};
+  const auth = payload.auth
+  return  {auth};
 })(LoginContainer);
 
 const WrappedNormalLoginForm = Form.create()(LoginContainer);

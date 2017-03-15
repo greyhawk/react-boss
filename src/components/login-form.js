@@ -8,12 +8,12 @@ const FormItem = Form.Item;
 const LoginForm = ({form, handleSubmit}) => {
   const { getFieldDecorator, getFieldsError, getFieldError, isFieldTouched } = form;
   // Only show error after a field is touched.
-  const userNameError = isFieldTouched('userName') && getFieldError('userName');
+  const userNameError = isFieldTouched('username') && getFieldError('username');
   const passwordError = isFieldTouched('password') && getFieldError('password');
   return (
     <Form className="login-form" onSubmit={handleSubmit}>
       <FormItem className='item'>
-        {getFieldDecorator('userName', {
+        {getFieldDecorator('username', {
           rules: [{ required: true, message: 'Please input your username!' }],
         })(
           <Input prefix={<Icon type="user" style={{ fontSize: 13 }} />} placeholder="Username" />

@@ -1,0 +1,69 @@
+.md-preview{
+  display: flex;
+}
+.md-preview .preview {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow: hidden;
+}
+.md-preview .preview .preview-container{
+  width: 210px;
+  height: 419.517px;
+  margin: 0px auto;
+}
+.preview-container-bg{
+  width: 870px;
+  height: 1738px;
+  background: url('./../images/iphone-6-silver.png');
+  transform: scale(0.241379, 0.241379);
+  transform-origin: 0px 0px 0px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.preview-container-inner-bg{
+  background-color: white;
+  width: 250px;
+  height: 444.667px;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  position: relative;
+  transform: scale(3, 3);
+  overflow: hidden;
+}
+
+.preview-content-box{
+  align-items: stretch;
+  background-color: transparent;
+  border-style: solid;
+  border-width: 0px;
+  bottom: 0px;
+  box-sizing: border-box;
+  color: inherit;
+  flex-basis: auto;
+  flex-direction: column;
+  flex-shrink: 0;
+  font-style: inherit;
+  font-variant: inherit;
+  font-weight: inherit;
+  font-stretch: inherit;
+  font-size: inherit;
+  line-height: inherit;
+  font-family: inherit;
+  left: 0px;
+  list-style: none;
+  margin: 0px;
+  min-height: 0px;
+  min-width: 0px;
+  padding: 0px;
+  position: absolute;
+  right: 0px;
+  text-align: inherit;
+  text-decoration: none;
+  top: 0px;
+  -webkit-box-align: stretch;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+}

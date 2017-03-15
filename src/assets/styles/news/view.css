@@ -1,0 +1,6 @@
+.page-news-view{
+  display: flex;
+}
+.page-news-view .editor{
+  margin-right: 10px;
+}
