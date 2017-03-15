@@ -9,7 +9,8 @@ import Welcome from './components/welcome';
 import NewsContainer from './containers/news-container.js';
 import NewsViewContainer from './containers/news-view-container';
 import ScenicContainer from './containers/scenic-container';
-
+import 'antd/lib/spin/style/css';
+import { Form, Icon, Input, Button, Checkbox, Spin} from 'antd';
 const store = configStore();
 store.runSaga(authSaga);
 const auth = (nextState, replace) => {
