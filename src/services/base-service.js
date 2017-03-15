@@ -5,10 +5,12 @@ function checkStatus(response) {
   if (response.status >= 200 && response.status < 300) {
     return response
   } else {
+    //if this an unauthorized access, redirect to login page;
     if (response.status === 401 || response.status === 403) {
       browserHistory.push('/login');
       return;
     }
+    //throw it when got another error;
     var error = new Error(response.statusText)
     error.response = response
     throw error
@@ -21,7 +23,7 @@ function parseJSON(response) {
 
 const BaseService = {
   post(url, body){
-    return new Promise(function(resolve, reject) {
+    return new Promise((resolve, reject) => {
       fetch(url, {
         method: 'POST',
         headers: {
@@ -31,9 +33,9 @@ const BaseService = {
       })
       .then(checkStatus)
       .then(parseJSON)
-      .then(function(result){
+      .then((result) => {
         resolve(result);
-      }, function(error){
+      }, (error) => {
         reject(error);
       })
     });
@@ -41,7 +43,7 @@ const BaseService = {
   get(url, data){
   },
   put(url, body){
-    return new Promise(function(resolve, reject) {
+    return new Promise((resolve, reject) => {
       fetch(url, {
         method: 'PUT',
         headers: {
@@ -51,20 +53,30 @@ const BaseService = {
       })
       .then(checkStatus)
       .then(parseJSON)
-      .then(function(result){
+      .then((result) => {
         resolve(result);
-      }, function(error){
-        reject(error);
-      }).catch(function(error) {
-        console.log('request failed', error)
+      }).catch((error) => {
         throw error;
       })
     });
   },
   delete(url, data){
+    return new Promise((resolve, reject) => {
+      fetch(url, {
+        method: 'DELETE',
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      })
+      .then(checkStatus)
+      .then(parseJSON)
+      .catch((error) => {
+        throw error;
+      })
+    });
   },
   upload(url, body) {
-    return new Promise(function(resolve, reject) {
+    return new Promise((resolve, reject) => {
       fetch(url, {
         method: 'POST',
         headers: {
@@ -74,11 +86,9 @@ const BaseService = {
       })
       .then(checkStatus)
       .then(parseJSON)
-      .then(function(result){
+      .then((result) => {
         resolve(result);
-      }, function(error){
-        reject(error);
-      }).catch(function(error) {
+      }).catch((error) => {
         console.log('request failed', error)
         throw error;
       })

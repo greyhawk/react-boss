@@ -13,6 +13,7 @@ import 'antd/lib/spin/style/css';
 import { Form, Icon, Input, Button, Checkbox, Spin} from 'antd';
 const store = configStore();
 store.runSaga(authSaga);
+//if token exists, redirect to home page,
 const auth = (nextState, replace) => {
   if (window.localStorage.getItem('auth')) {
     replace({ pathname: '/'})
