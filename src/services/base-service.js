@@ -1,9 +1,14 @@
 require('es6-promise').polyfill();
 require('isomorphic-fetch');
+import {browserHistory} from 'react-router';
 function checkStatus(response) {
   if (response.status >= 200 && response.status < 300) {
     return response
   } else {
+    if (response.status == 401 || response.status == 403) {
+      browserHistory.push('/login');
+      return;
+    }
     var error = new Error(response.statusText)
     error.response = response
     throw error
