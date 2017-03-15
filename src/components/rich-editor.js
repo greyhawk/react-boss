@@ -2,8 +2,9 @@ import React, {Component} from 'react';
 import * as Draft from 'draft-js';
 import { Editor } from 'react-draft-wysiwyg';
 import 'react-draft-wysiwyg/dist/react-draft-wysiwyg.css';
-import {stateToHTML} from 'draft-js-export-html';
-const {EditorState, RichUtils} = Draft;
+const {EditorState} = Draft;
+import BaseService from './../services/base-service';
+import draftToHtml from 'draftjs-to-html';
 class RichEditor extends Component {
        constructor(props) {
          super(props);
@@ -14,17 +15,15 @@ class RichEditor extends Component {
          const {change} = props;
          this.onEditorStateChange = (editorState) => {
            this.setState({editorState});
-           const contentState = editorState.getCurrentContent();
-           const html = stateToHTML(contentState);
-          //  console.log('html', html);
+           const contentState = Draft.convertToRaw(editorState.getCurrentContent());
+           const html = draftToHtml(contentState);
            change(html);
          };
 
          this.uploadImageCallBack = (e) => {
-           console.log('e', e);
-           console.log('upload your file here');
            return new Promise(function(resolve, reject) {
-             resolve(12);
+             const link = 'https://www.coloseo.cn/assets/images/portfolio/fullsize/5.jpg';
+             resolve({data: {link}});
            })
          };
        }

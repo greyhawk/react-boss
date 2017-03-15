@@ -5,7 +5,7 @@ function checkStatus(response) {
   if (response.status >= 200 && response.status < 300) {
     return response
   } else {
-    if (response.status == 401 || response.status == 403) {
+    if (response.status === 401 || response.status === 403) {
       browserHistory.push('/login');
       return;
     }
@@ -63,6 +63,27 @@ const BaseService = {
   },
   delete(url, data){
   },
+  upload(url, body) {
+    return new Promise(function(resolve, reject) {
+      fetch(url, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body
+      })
+      .then(checkStatus)
+      .then(parseJSON)
+      .then(function(result){
+        resolve(result);
+      }, function(error){
+        reject(error);
+      }).catch(function(error) {
+        console.log('request failed', error)
+        throw error;
+      })
+    });
+  }
 }
 
 export default BaseService;

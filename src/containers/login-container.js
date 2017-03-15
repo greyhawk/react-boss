@@ -31,6 +31,7 @@ class LoginContainer extends Component {
     const {dispatch} = this.props;
     e.preventDefault();
     this.props.form.validateFields((err, values) => {
+      console.log('err', err);
       if (!err) {
         dispatch(AuthAction.login(values));
       }
@@ -40,7 +41,7 @@ class LoginContainer extends Component {
     return (
       <div className='page-login'>
         <div className='login'>
-          <h2>coloseo cms</h2>
+          <h2>微信后台管理系统</h2>
           <LoginForm handleSubmit={this.handleSubmit} form={this.props.form}></LoginForm>
         </div>
     </div>
