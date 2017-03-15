@@ -6,7 +6,10 @@ import AuthService from './../services/auth';
 function* fetchUser(action) {
    try {
       const user = yield call(AuthService.login, action.payload);
-      yield put({type: "LOGIN_SUCCEEDED", user: user});
+      const accessToken = user.accessToken;
+      window.localStorage.setItem('auth', JSON.stringify(accessToken));
+      const message = 'authorized';
+      yield put({type: "LOGIN_SUCCEEDED", message});
    } catch (e) {
       yield put({type: "LOGIN_FAILED", message: e.message});
    }
