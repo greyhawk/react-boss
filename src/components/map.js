@@ -31,8 +31,6 @@ export default class Map extends Component {
       });
       const lnglat = location.lnglat;
       geocoder.getAddress([lnglat.lat, lnglat.lng], (status, result) => {
-        console.log('status', status);
-        console.log('result', result);
         self.props.onChange(status, result);
       });
     }, (e) => {

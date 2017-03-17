@@ -13,7 +13,6 @@ function hasErrors(fieldsError) {
 
 class LoginContainer extends Component {
   componentWillReceiveProps(props) {
-    console.log('props', props);
     const {auth, router} = props;
     try{
       if (auth.message === "authorized" ) {
@@ -31,7 +30,6 @@ class LoginContainer extends Component {
     const {dispatch} = this.props;
     e.preventDefault();
     this.props.form.validateFields((err, values) => {
-      console.log('err', err);
       if (!err) {
         dispatch(AuthAction.login(values));
       }

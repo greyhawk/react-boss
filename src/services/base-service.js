@@ -1,6 +1,14 @@
 require('es6-promise').polyfill();
 require('isomorphic-fetch');
 import {browserHistory} from 'react-router';
+
+function settingHeader() {
+  return {
+    "X-Consumer-Custom-ID": parseInt(Math.random() * 10, 10),
+    'Content-Type': 'application/json'
+  };
+}
+
 function checkStatus(response) {
   if (response.status >= 200 && response.status < 300) {
     return response
@@ -11,9 +19,9 @@ function checkStatus(response) {
       return;
     }
     //throw it when got another error;
-    var error = new Error(response.statusText)
-    error.response = response
-    throw error
+    var error = new Error(response.statusText);
+    error.response = response;
+    throw error;
   }
 }
 
@@ -26,9 +34,7 @@ const BaseService = {
     return new Promise((resolve, reject) => {
       fetch(url, {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
+        headers: settingHeader(),
         body: JSON.stringify(body)
       })
       .then(checkStatus)
@@ -40,15 +46,26 @@ const BaseService = {
       })
     });
   },
-  get(url, data){
+  get(url){
+    return new Promise((resolve, reject) => {
+      fetch(url, {
+        method: 'GET',
+        headers: settingHeader(),
+      })
+      .then(checkStatus)
+      .then(parseJSON)
+      .then((result) => {
+        resolve(result);
+      }).catch((error) => {
+        throw error;
+      })
+    });
   },
   put(url, body){
     return new Promise((resolve, reject) => {
       fetch(url, {
         method: 'PUT',
-        headers: {
-          'Content-Type': 'application/json'
-        },
+        headers: settingHeader(),
         body: JSON.stringify(body)
       })
       .then(checkStatus)
@@ -60,13 +77,27 @@ const BaseService = {
       })
     });
   },
-  delete(url, data){
+  patch(url, body){
+    return new Promise((resolve, reject) => {
+      fetch(url, {
+        method: 'PATCH',
+        headers: settingHeader(),
+        body: JSON.stringify(body)
+      })
+      .then(checkStatus)
+      .then(parseJSON)
+      .then((result) => {
+        resolve(result);
+      }).catch((error) => {
+        throw error;
+      })
+    });
+  },
+  delete(url){
     return new Promise((resolve, reject) => {
       fetch(url, {
         method: 'DELETE',
-        headers: {
-          'Content-Type': 'application/json'
-        }
+        headers: settingHeader(),
       })
       .then(checkStatus)
       .then(parseJSON)
@@ -79,9 +110,7 @@ const BaseService = {
     return new Promise((resolve, reject) => {
       fetch(url, {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
+        headers: settingHeader(),
         body
       })
       .then(checkStatus)
@@ -89,7 +118,6 @@ const BaseService = {
       .then((result) => {
         resolve(result);
       }).catch((error) => {
-        console.log('request failed', error)
         throw error;
       })
     });

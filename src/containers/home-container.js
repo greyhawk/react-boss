@@ -69,21 +69,18 @@ class HomeContainer extends Component {
                 <Menu.Item key="11">线上乐购</Menu.Item>
               </SubMenu>
               <SubMenu key="sub4" title={<span><Icon type="notification" />系统管理</span>}>
-                <Menu.Item key="12">管理员列表</Menu.Item>
-                <Menu.Item key="13">黑名单</Menu.Item>
+                <Menu.Item key="12">
+                  <Link to='/config/wechat'>
+                    微信配置
+                  </Link>
+                </Menu.Item>
+                <Menu.Item key="13">
+                  <Link to='/config/api'>Oauth授权API列表</Link>
+                </Menu.Item>
               </SubMenu>
             </Menu>
           </Sider>
-          <Layout style={{ padding: '0 24px 24px' }}>
-            <Breadcrumb style={{ margin: '12px 0' }}>
-              <Breadcrumb.Item>Home</Breadcrumb.Item>
-              <Breadcrumb.Item>List</Breadcrumb.Item>
-              <Breadcrumb.Item>App</Breadcrumb.Item>
-            </Breadcrumb>
-            <Content className='container'>
-              {this.props.children}
-            </Content>
-          </Layout>
+          {this.props.children}
         </Layout>
       </Layout>
     );
