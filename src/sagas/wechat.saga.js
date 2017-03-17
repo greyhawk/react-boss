@@ -1,7 +1,5 @@
-import { takeEvery, takeLatest, watch } from 'redux-saga'
-import { call, put } from 'redux-saga/effects';
+import { call, put,takeEvery } from 'redux-saga/effects';
 import WechatService from './../services/wechat';
-
 import {
   WILL_POST_WECHAT_CONFIG,
   CREATE_WECHAT_FAILED,
@@ -60,8 +58,7 @@ function* updateWechat(action) {
 function* removeWechat(action) {
    try {
      const payload = action.payload;
-      const data = yield call(WechatService.remove, payload.id);
-      console.log('data------');
+     yield call(WechatService.remove, payload.id);
       yield put({type: REMOVE_WECHAT_CONFIG_SUCCESSED});
    } catch (e) {
       yield put({type: REMOVE_WECHAT_CONFIG_FAILED, message: e.message});

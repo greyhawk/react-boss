@@ -2,14 +2,8 @@ import React, {Component} from 'react';
 import { connect } from 'react-redux';
 import './../assets/styles/auth/index.css';
 import {AuthAction} from './../actions/auth';
-import { browserHistory } from 'react-router';
 import LoginForm from './../components/login-form.js';
 import { Form } from 'antd';
-import {Lifecycle} from 'react-router';
-
-function hasErrors(fieldsError) {
-  return Object.keys(fieldsError).some(field => fieldsError[field]);
-}
 
 class LoginContainer extends Component {
   componentWillReceiveProps(props) {

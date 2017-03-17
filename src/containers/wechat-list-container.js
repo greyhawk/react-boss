@@ -1,22 +1,18 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
-import { Layout, Menu, Breadcrumb, Icon, Form, Table } from 'antd';
-const { Header, Content, Sider} = Layout;
+import { Layout, Breadcrumb, Table } from 'antd';
+const {Content} = Layout;
 import {WechatAction} from './../actions/wechat';
 import {Link} from 'react-router';
 
 class WechatListContainer extends Component{
-
-  constructor(props) {
-    super(props);
-  }
   componentDidMount() {
     const {dispatch} = this.props;
     dispatch(WechatAction.list());
   }
   componentWillReceiveProps(props) {
     const {dispatch, type} = props;
-    if (props.type === "REMOVE_WECHAT_CONFIG_SUCCESSED") {
+    if (type === "REMOVE_WECHAT_CONFIG_SUCCESSED") {
       dispatch(WechatAction.list());
     }
   }
@@ -60,12 +56,10 @@ class WechatListContainer extends Component{
         <span>
           <Link to={'/config/wechat/' + record.id}>编辑</Link>
           <span className="ant-divider" />
-          <a href="javascript:;" onClick={this.handleRemove.bind(this, record.id)} >删除</a>
+          <a onClick={this.handleRemove.bind(this, record.id)} >删除</a>
     </span>
   ),
 }];
-
-const data = [];
     return (
       <Layout className='layout'>
         <Breadcrumb style={{ margin: '12px 0' }}>

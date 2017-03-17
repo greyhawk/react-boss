@@ -1,10 +1,9 @@
 import React from 'react';
-import { Form, Input, Tooltip, Icon, Select, Row, Col, Checkbox, Button } from 'antd';
+import { Form, Input, Button } from 'antd';
 const FormItem = Form.Item;
-const Option = Select.Option;
 
 const WechatConfig = ({form, handleSubmit}) => {
-  const { getFieldDecorator, getFieldProps} = form;
+  const { getFieldDecorator} = form;
     const formItemLayout = {
       labelCol: { span: 6 },
       wrapperCol: { span: 14 },

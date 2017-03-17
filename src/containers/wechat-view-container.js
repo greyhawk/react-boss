@@ -2,10 +2,8 @@ import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import WechatConfig from './../components/wechat-config';
 import {WechatAction} from './../actions/wechat';
-import { Layout, Menu, Breadcrumb, Icon, Form } from 'antd';
-const { Header, Content, Sider } = Layout;
-import { createForm } from 'rc-form';
-
+import { Layout, Breadcrumb, Form } from 'antd';
+const {Content} = Layout;
 class WechatViewContainer extends Component {
   constructor(props) {
     super(props);

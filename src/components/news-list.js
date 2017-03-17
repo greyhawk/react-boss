@@ -1,7 +1,7 @@
 import 'antd/lib/table/style/css';
 import 'antd/lib/icon/style/css';
 import React from 'react';
-import { Table, Icon, Input, Button, Checkbox } from 'antd';
+import { Table, Icon} from 'antd';
 
 const OrderList = () => {
   const data = [{

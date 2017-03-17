@@ -2,14 +2,14 @@ import React from 'react';
 import 'antd/lib/form/style/css';
 import 'antd/lib/input/style/css';
 import 'antd/lib/button/style/css';
-import { Form, Icon, Input, Button, Checkbox} from 'antd';
+import { Form, Icon, Input, Button} from 'antd';
 const FormItem = Form.Item;
 
 const LoginForm = ({form, handleSubmit}) => {
-  const { getFieldDecorator, getFieldsError, getFieldError, isFieldTouched } = form;
+  const { getFieldDecorator, getFieldError, isFieldTouched } = form;
   // Only show error after a field is touched.
-  const userNameError = isFieldTouched('username') && getFieldError('username');
-  const passwordError = isFieldTouched('password') && getFieldError('password');
+  isFieldTouched('username') && getFieldError('username');
+  isFieldTouched('password') && getFieldError('password');
   return (
     <Form className="login-form" onSubmit={handleSubmit}>
       <FormItem className='item'>

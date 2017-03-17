@@ -1,12 +1,11 @@
 import React, {Component} from 'react';
-import {Editor, EditorState, convertToRaw, contentState} from 'draft-js';
 import RichEditor from './../components/rich-editor.js';
 import Preview from './../components/preview';
 import './../assets/styles/editor.css';
 import './../assets/styles/news/view.css';
 import 'draft-js/dist/Draft.css'
-import { Layout, Menu, Breadcrumb, Icon } from 'antd';
-const { Header, Content, Sider } = Layout;
+import { Layout, Breadcrumb } from 'antd';
+const {Content} = Layout;
 
 class NewsViewContainer extends Component {
   constructor(props) {

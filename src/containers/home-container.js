@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
-import { Layout, Menu, Breadcrumb, Icon } from 'antd';
+import { Layout, Menu, Icon } from 'antd';
 const { SubMenu } = Menu;
-const { Header, Content, Sider } = Layout;
+const { Header, Sider } = Layout;
 import { Link } from 'react-router';
 import 'antd/lib/layout/style/css';
 import 'antd/lib/breadcrumb/style/css';

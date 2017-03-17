@@ -1,6 +1,6 @@
 import React from 'react';
 import {Provider} from 'react-redux';
-import { Router, Route, hashHistory, IndexRoute, browserHistory } from 'react-router';
+import { Router, Route, IndexRoute, browserHistory } from 'react-router';
 import configStore from './store.config';
 import LoginContainer from './containers/login-container';
 import HomeContainer from './containers/home-container';

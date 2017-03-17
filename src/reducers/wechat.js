@@ -6,7 +6,7 @@ const wechat = function(state='wechat', action) {
         list: action.list,
         state
       };
-    case 'LIST_WECHAT_SUCCESSED':
+    case 'LIST_WECHAT_FAILED':
       return {
         message:action.message,
         state,

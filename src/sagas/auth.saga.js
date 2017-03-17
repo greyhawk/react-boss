@@ -1,5 +1,4 @@
-import { takeEvery, takeLatest } from 'redux-saga'
-import { call, put } from 'redux-saga/effects';
+import { call, put, takeEvery} from 'redux-saga/effects';
 import {WILL_LOGIN_IN} from './../actions/auth';
 import AuthService from './../services/auth';
 
@@ -15,5 +14,5 @@ function* fetchUser(action) {
    }
 }
 export default function* authSaga() {
-  yield* takeEvery("WILL_LOGIN_IN", fetchUser);
+  yield* takeEvery(WILL_LOGIN_IN, fetchUser);
 };

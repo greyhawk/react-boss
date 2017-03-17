@@ -1,8 +1,8 @@
 import React, {Component} from 'react';
 import OrderList from './../components/news-list';
 import './../assets/styles/news/list.css';
-import { Layout, Menu, Breadcrumb, Icon } from 'antd';
-const { Header, Content, Sider } = Layout;
+import { Layout, Breadcrumb } from 'antd';
+const {Content} = Layout;
 class HomeContainer extends Component {
   render() {
     return (

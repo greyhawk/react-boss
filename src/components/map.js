@@ -4,9 +4,6 @@ export default class Map extends Component {
     address: PropTypes.string.isRequired,
     onChange: PropTypes.func.isRequired,
   }
-  constructor(props) {
-    super(props);
-  }
   componentDidMount() {
     const self = this;
     const container = this.refs.map;

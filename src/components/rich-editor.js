@@ -3,7 +3,6 @@ import * as Draft from 'draft-js';
 import { Editor } from 'react-draft-wysiwyg';
 import 'react-draft-wysiwyg/dist/react-draft-wysiwyg.css';
 const {EditorState} = Draft;
-import BaseService from './../services/base-service';
 import draftToHtml from 'draftjs-to-html';
 class RichEditor extends Component {
        constructor(props) {

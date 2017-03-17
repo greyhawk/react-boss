@@ -1,8 +1,8 @@
 import React, {Component} from 'react';
 import './../assets/styles/news/list.css';
 import Map from './../components/map';
-import { Layout, Menu, Breadcrumb, Icon } from 'antd';
-const { Header, Content, Sider } = Layout;
+import { Layout, Breadcrumb } from 'antd';
+const {Content } = Layout;
 
 class ScenicContainer extends Component {
   change(status, result) {
