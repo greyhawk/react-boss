@@ -2,20 +2,20 @@ import React, {Component} from 'react';
 import { connect } from 'react-redux';
 import './../assets/styles/auth/index.css';
 import {AuthAction} from './../actions/auth';
-import { browserHistory } from 'react-router';
 import LoginForm from './../components/login-form.js';
 import { Form } from 'antd';
 
-function hasErrors(fieldsError) {
-  return Object.keys(fieldsError).some(field => fieldsError[field]);
-}
-
 class LoginContainer extends Component {
   componentWillReceiveProps(props) {
-    const {user, router} = props;
-    if (user) {
-      router.push('/');
+    const {auth, router} = props;
+    try{
+      if (auth.message === "authorized" ) {
+        router.push('/');
+      }
+    }catch(e){
+
     }
+
   }
   componentDidMount() {
     // this.props.form.validateFields();
@@ -33,7 +33,7 @@ class LoginContainer extends Component {
     return (
       <div className='page-login'>
         <div className='login'>
-          <h2>coloseo cms</h2>
+          <h2>微信后台管理系统</h2>
           <LoginForm handleSubmit={this.handleSubmit} form={this.props.form}></LoginForm>
         </div>
     </div>
@@ -41,8 +41,8 @@ class LoginContainer extends Component {
   }
 }
 LoginContainer = connect((payload) => {
-  const user = payload.auth.user;
-  return  {user};
+  const auth = payload.auth
+  return  {auth};
 })(LoginContainer);
 
 const WrappedNormalLoginForm = Form.create()(LoginContainer);

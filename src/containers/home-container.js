@@ -1,7 +1,8 @@
 import React, {Component} from 'react';
-import { Layout, Menu, Breadcrumb, Icon } from 'antd';
+import { Layout, Menu, Icon } from 'antd';
 const { SubMenu } = Menu;
-const { Header, Content, Sider } = Layout;
+const { Header, Sider } = Layout;
+import { Link } from 'react-router';
 import 'antd/lib/layout/style/css';
 import 'antd/lib/breadcrumb/style/css';
 import 'antd/lib/menu/style/css';
@@ -41,35 +42,45 @@ class HomeContainer extends Component {
               defaultOpenKeys={['sub1']}
               style={{ height: '100%' }}
             >
-              <SubMenu key="sub1" title={<span><Icon type="user" />客户管理</span>}>
-                <Menu.Item key="1">客户列表</Menu.Item>
-                <Menu.Item key="2">添加客户</Menu.Item>
-                <Menu.Item key="3">黑名单</Menu.Item>
-                <Menu.Item key="4">白名单</Menu.Item>
+              <SubMenu key="sub1" title={<span><Icon type="user" />魅力宜宾</span>}>
+                <Menu.Item key="1">
+                  <Link to='/news'>话说宜宾</Link>
+                </Menu.Item>
+                <Menu.Item key="2">
+                  <Link to='/scenic'>多彩宜宾</Link>
+                </Menu.Item>
+                <Menu.Item key="3">
+                  <Link to='/activity'>嗨翻宜宾</Link>
+                </Menu.Item>
               </SubMenu>
-              <SubMenu key="sub2" title={<span><Icon type="laptop" />订单管理</span>}>
-                <Menu.Item key="5">订单列表</Menu.Item>
-                <Menu.Item key="6">待处理订单</Menu.Item>
-                <Menu.Item key="7">处理中订单</Menu.Item>
-                <Menu.Item key="8">废弃订单</Menu.Item>
+              <SubMenu key="sub2" title={<span><Icon type="laptop" />玩转宜宾</span>}>
+                <Menu.Item key="5">
+                  <Link to='/navigation'>随身导</Link>
+                </Menu.Item>
+                <Menu.Item key="6">
+                  <Link to='/recommend'>小宜推荐</Link>
+                </Menu.Item>
+                <Menu.Item key="7">服务热线</Menu.Item>
+                <Menu.Item key="8">互动游戏</Menu.Item>
               </SubMenu>
-              <SubMenu key="sub3" title={<span><Icon type="notification" />系统设置</span>}>
-                <Menu.Item key="9">修改密码</Menu.Item>
-                <Menu.Item key="10">参数设置</Menu.Item>
-                <Menu.Item key="11">管理员管理</Menu.Item>
+              <SubMenu key="sub3" title={<span><Icon type="notification" />走进宜宾</span>}>
+                <Menu.Item key="9">酒店预订</Menu.Item>
+                <Menu.Item key="10">门票订购</Menu.Item>
+                <Menu.Item key="11">线上乐购</Menu.Item>
+              </SubMenu>
+              <SubMenu key="sub4" title={<span><Icon type="notification" />系统管理</span>}>
+                <Menu.Item key="12">
+                  <Link to='/config/wechat'>
+                    微信配置
+                  </Link>
+                </Menu.Item>
+                <Menu.Item key="13">
+                  <Link to='/config/api'>Oauth授权API列表</Link>
+                </Menu.Item>
               </SubMenu>
             </Menu>
           </Sider>
-          <Layout style={{ padding: '0 24px 24px' }}>
-            <Breadcrumb style={{ margin: '12px 0' }}>
-              <Breadcrumb.Item>Home</Breadcrumb.Item>
-              <Breadcrumb.Item>List</Breadcrumb.Item>
-              <Breadcrumb.Item>App</Breadcrumb.Item>
-            </Breadcrumb>
-            <Content className='container'>
-              {this.props.children}
-            </Content>
-          </Layout>
+          {this.props.children}
         </Layout>
       </Layout>
     );

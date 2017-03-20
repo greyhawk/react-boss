@@ -1,13 +1,12 @@
 const auth = function(state='auth', action) {
+  const message = action.message;
 	switch(action.type) {
     case 'LOGIN_SUCCEEDED':
-      const user = action.user;
       return {
-        user,
+        message,
         state
       };
     case 'LOGIN_FAILED':
-      const message = action.message;
       return {
         message,
         state,
